@@ -1,0 +1,66 @@
+    #include <iostream>
+    #include <cstdio>
+    #include <vector>
+    #include <set>
+    #include <climits>
+    #include <map>
+    #include <algorithm>
+    #include <cmath>
+    #include <utility>
+    #include <string>
+    #include <cstring>
+    #include <deque>
+    using namespace std;
+    #define ll long long int
+    #define pb push_back
+    #define mp make_pair
+    #define ull unsigned long long int
+
+    int solve(string s)
+    {
+        int n = s.length();
+        string str;
+        int ans=-1 ; 
+        for(int i=0; i<(1<<n); i++)
+        {
+            str="";
+            for(int j=0; j<n; j++)
+            {
+                if((i>>j)&1)
+                    str+=s[j];
+            }
+
+            if(str[0]!='0')
+            {
+            int x=str[0]-'0';
+
+            for(int p=1; p<str.length(); p++)
+            {
+                x=x*10;
+                x+=(str[p]-'0');
+            }
+
+            int k=sqrt(x);
+
+            if(k*k == x)
+            {
+                
+                if((int)str.length() > ans){
+
+                    ans=str.length();
+                }
+            }
+        }
+        }
+        if(ans==-1)
+            return -1;
+        else
+        return (n-ans) ;
+    }
+
+    int main() {
+    string s;
+    cin>>s;
+    cout<<solve(s);
+    return 0;
+    }
